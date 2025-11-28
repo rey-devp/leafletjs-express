@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 
-import placesRouter from "../leafletjs-backend/routes/place";
+import placesRouter from "./routes/place.js";
 
 dotenv.config();
 
@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 const PORT = process.env.PORT || 4000;
-const MONGO_URI = process.env.MONGO_GIS;
+const MONGO_URI = process.env.MONGO_GIS || "mongodb://localhost:27017/GIS";
 
 mongoose
   .connect(MONGO_URI, { dbName: "GIS" })
